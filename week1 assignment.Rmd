@@ -1,0 +1,36 @@
+---
+title: "Week 1 Assignment"
+author: "Kelly Eng"
+date: "2023-09-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Introduction
+
+Here is the link to the article, https://fivethirtyeight.com/features/aging-congress-boomers/. Politicians in congress are older than ever compared to previous years.The median age is a record high and they are increasingly becoming out of touch with technology. As a result, they're not focused on improving the lives of the youth and providing a better future for them, they're more likely to focus on issues involving seniors.
+
+
+You need tidyverse
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+```
+
+The data from the GitHub repo of 538
+```{r csv-data}
+x <- read.csv(url("https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-demographics/data_aging_congress.csv"))
+congress <- as.data.frame(x)
+glimpse(congress)
+```
+
+The lost, greatest, and silent generation have very old people in congress at the top of their age bracket.
+```{r plot-data}
+ggplot(data = congress, aes(x = generation, y = age_years)) + geom_point()
+```
+
+##Conclusion
+The data contains a lot of duplicates, if it were to be pruned of duplicates, it would be easier to read and draw conclusions from. It's overly massive due to duplicates, but without a doubt there is the truth that congress is aging.If provided with a more concise data set without duplicates, more results could be verified.
